@@ -398,8 +398,6 @@ def xmssFastSignMsg(hashFunc, params: XMSSParams, sk, state: BDSState, sigMsg, m
     # the auth path was already computed during the previous round
     sigMsg[sigMsgLen:sigMsgLen + params.h * params.n] = state.auth[:params.h * params.n]
 
-    print(bytes(state.auth[:params.h * params.n]).hex())
-
     if idx < (1 << params.h) - 1:
         bdsRound(hashFunc, state, idx, skSeed, params, pubSeed, otsAddr)
         bdsTreeHashUpdate(hashFunc, state, (params.h - params.k) >> 1, skSeed, params, pubSeed, otsAddr)

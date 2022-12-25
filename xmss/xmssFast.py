@@ -1,3 +1,5 @@
+import binascii
+
 from xmss.algsXMSSFast import TreeHashInst, xmssFastGenKeyPair, xmssFastSignMsg, xmssFastUpdate, BDSState
 from xmss.eHashFunctions import EHashFunction
 from xmss.qrlAddressFormat import EAddrFormatType
@@ -191,6 +193,9 @@ class XMSSFast:
 
     def getAddress(self):
         return QRLHelper.getAddress(self.getPK())
+
+    def getQAddress(self):
+        return 'Q' + binascii.hexlify(QRLHelper.getAddress(self.getPK())).decode()
 
     def getNumberSignatures(self):
         return 1 << self._height

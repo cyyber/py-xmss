@@ -10,7 +10,7 @@ class QRLHelper:
         pass
 
     @staticmethod
-    def getAddress(extended_pk: bytes) -> list[int]:
+    def getAddress(extended_pk: bytes) -> bytes:
         descr = QRLDescriptor.fromExtendedPK(extended_pk)
 
         if descr.getAddrFormatType() != EAddrFormatType.SHA256_2X:
